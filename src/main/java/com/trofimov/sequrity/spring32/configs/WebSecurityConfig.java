@@ -1,16 +1,12 @@
 package com.trofimov.sequrity.spring32.configs;
 
-import com.trofimov.sequrity.spring32.service.UserDetailService;
-import com.trofimov.sequrity.spring32.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+import com.trofimov.sequrity.spring32.service.UserDetailServiceImp;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,9 +16,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final SuccessUserHandler successUserHandler;
 
-    private final UserDetailService userDetailsService;
+    private final UserDetailServiceImp userDetailsService;
 
-    public WebSecurityConfig(UserDetailService userDetailsService, SuccessUserHandler successUserHandler) {
+    public WebSecurityConfig(UserDetailServiceImp userDetailsService, SuccessUserHandler successUserHandler) {
         this.successUserHandler = successUserHandler;
         this.userDetailsService = userDetailsService;
     }

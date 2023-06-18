@@ -1,25 +1,19 @@
 package com.trofimov.sequrity.spring32.service;
 
-import com.trofimov.sequrity.spring32.entity.Role;
 import com.trofimov.sequrity.spring32.entity.User;
 import com.trofimov.sequrity.spring32.repository.UserRepository;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
-public class UserDetailService implements UserDetailsService {
+public class UserDetailServiceImp implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    public UserDetailService(UserRepository userRepository) {
+    public UserDetailServiceImp(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
