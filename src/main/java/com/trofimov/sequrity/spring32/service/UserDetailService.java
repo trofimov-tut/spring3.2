@@ -24,16 +24,12 @@ public class UserDetailService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public User loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> userOptional = userRepository.findByName(username);
         if (userOptional.isEmpty()) {
             throw new UsernameNotFoundException("Пользователь " + username + " не найден");
         }
-        return new org.springframework.security.core.userdetails.User(userOptional.get().getName(), userOptional.get().getPassword(),
-                authorities(userOptional.get().getRoles()));
+        return userOptional.get();
     }
 
-    private Collection<? extends GrantedAuthority> authorities(Collection<Role> roles){
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
-    }
 }
